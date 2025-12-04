@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 export default function Dashboard({ view, setView, onLogout, children }) {
   return (
     <div style={{ display: "flex", height: "100vh", background: "#f4f6f9" }}>
@@ -16,19 +18,22 @@ export default function Dashboard({ view, setView, onLogout, children }) {
 
         <h2 style={{ textAlign: "center", marginBottom: "10px" }}>🍔 Panel Admin</h2>
 
-        <button style={btnSidebar(view === "dashboard")}
+        <button
+          style={btnSidebar(view === "dashboard")}
           onClick={() => setView("dashboard")}
         >
           🏠 Dashboard
         </button>
 
-        <button style={btnSidebar(view === "productos")}
+        <button
+          style={btnSidebar(view === "productos")}
           onClick={() => setView("productos")}
         >
           🍟 Productos
         </button>
 
-        <button style={btnSidebar(view === "tipos")}
+        <button
+          style={btnSidebar(view === "tipos")}
           onClick={() => setView("tipos")}
         >
           📦 Tipos de Producto
@@ -61,6 +66,15 @@ export default function Dashboard({ view, setView, onLogout, children }) {
     </div>
   );
 }
+
+
+// ✅✅ ESTO ES LO QUE LE FALTABA PARA QUE SONAR NO MOLESTE
+Dashboard.propTypes = {
+  view: PropTypes.string.isRequired,
+  setView: PropTypes.func.isRequired,
+  onLogout: PropTypes.func.isRequired,
+  children: PropTypes.node
+};
 
 
 // ---- ESTILOS ----
