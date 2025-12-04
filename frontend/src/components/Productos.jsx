@@ -7,9 +7,10 @@ export default function Productos() {
   const [form, setForm] = useState({ nombre: "", precio: "", tipo_id: "" });
   const [editingId, setEditingId] = useState(null);
 
-    useEffect(() => {
-    fetchProductos();   
-  }, []); 
+  useEffect(() => {
+    fetchProductos();
+    fetchTipos();
+  }, []);
 
   const fetchProductos = () => {
     axios.get("http://localhost:4000/api/productos")
