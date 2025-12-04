@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 
 export default function Login({ onLoginSuccess }) {
   const [usuario, setUsuario] = useState("");
@@ -35,7 +36,9 @@ export default function Login({ onLoginSuccess }) {
           textAlign: "center",
         }}
       >
-        <h2 style={{ marginBottom: "20px", color: "#333" }}>🔐 Iniciar Sesión</h2>
+        <h2 style={{ marginBottom: "20px", color: "#333" }}>
+          🔐 Iniciar Sesión
+        </h2>
 
         <form onSubmit={handleSubmit}>
           <input
@@ -87,12 +90,10 @@ export default function Login({ onLoginSuccess }) {
               fontSize: "16px",
               transition: "0.3s",
             }}
-            onMouseOver={(e) =>
-              (e.target.style.background = "#357ABD")
-            }
-            onMouseOut={(e) =>
-              (e.target.style.background = "#4a90e2")
-            }
+            onMouseOver={(e) => (e.target.style.background = "#357ABD")}
+            onMouseOut={(e) => (e.target.style.background = "#4a90e2")}
+            onFocus={(e) => (e.target.style.background = "#357ABD")}
+            onBlur={(e) => (e.target.style.background = "#4a90e2")}
           >
             Entrar
           </button>
@@ -101,3 +102,8 @@ export default function Login({ onLoginSuccess }) {
     </div>
   );
 }
+
+/* ✅ VALIDACIÓN DE PROPS (SOLUCIONA EL ERROR DE SONARQUBE) */
+Login.propTypes = {
+  onLoginSuccess: PropTypes.func.isRequired,
+};
