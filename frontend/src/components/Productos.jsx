@@ -7,10 +7,9 @@ export default function Productos() {
   const [form, setForm] = useState({ nombre: "", precio: "", tipo_id: "" });
   const [editingId, setEditingId] = useState(null);
 
-  useEffect(() => {
-    fetchProductos();
-    fetchTipos();
-  }, []);
+    useEffect(() => {
+    fetchProductos();   
+  }, []); 
 
   const fetchProductos = () => {
     axios.get("http://localhost:4000/api/productos")
@@ -23,9 +22,6 @@ export default function Productos() {
     axios.get("http://localhost:4000/api/tipos")
       .then(res => setTipos(res.data))
       .catch(err => console.error("Error cargando tipos:", err));
-      axios.get("http://localhost:4000/api/tipos")
-      .then(res => console.log("Tipos cargados nuevamente (innecesario)"))
-      .catch(err => console.error("Error repetido:", err));
   };
 
   const handleSubmit = (e) => {
