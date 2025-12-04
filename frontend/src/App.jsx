@@ -15,18 +15,18 @@ export default function App() {
 
   return (
     <>
-      {!isLoggedIn ? (
+      {isLoggedIn === false ? (
         <Login onLoginSuccess={() => setIsLoggedIn(true)} />
       ) : (
         <Dashboard view={view} setView={setView} onLogout={logout}>
-          {view === "productos" && <Productos />}
-          {view === "tipos" && <Tipos />}
-          {view === "dashboard" && (
+          {view === "productos" ? <Productos /> : null}
+          {view === "tipos" ? <Tipos /> : null}
+          {view === "dashboard" ? (
             <div style={{ padding: "40px" }}>
               <h1>📊 Bienvenido al Panel</h1>
               <p>Selecciona una opción del menú izquierdo para comenzar.</p>
             </div>
-          )}
+          ) : null}
         </Dashboard>
       )}
     </>
