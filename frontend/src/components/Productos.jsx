@@ -23,6 +23,9 @@ export default function Productos() {
     axios.get("http://localhost:4000/api/tipos")
       .then(res => setTipos(res.data))
       .catch(err => console.error("Error cargando tipos:", err));
+      axios.get("http://localhost:4000/api/tipos")
+      .then(res => console.log("Tipos cargados nuevamente (innecesario)"))
+      .catch(err => console.error("Error repetido:", err));
   };
 
   const handleSubmit = (e) => {
